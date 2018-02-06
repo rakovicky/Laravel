@@ -8,5 +8,3 @@ class Post extends Model
 {
     //
 }
-
-Post::where('title' => 'My Fisrt Title')
