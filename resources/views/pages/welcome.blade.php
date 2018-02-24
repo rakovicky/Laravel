@@ -2,7 +2,14 @@
 
 @section('title', '| Homepage')
 
-@section('content')      
+@section('content')     
+
+<?php try {
+    DB::connection()->getPdo();
+        } catch (\Exception $e) {
+    die("Could not connect to the database.  Please check your configuration.");
+}
+?> 
       <div class="row">
          <div class="col-md-12">
             <div class="jumbotron">
