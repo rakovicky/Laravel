@@ -3,13 +3,6 @@
 @section('title', '| Homepage')
 
 @section('content')     
-
-<?php try {
-    DB::connection()->getPdo();
-        } catch (\Exception $e) {
-    die("Could not connect to the database.  Please check your configuration.");
-}
-?> 
       <div class="row">
          <div class="col-md-12">
             <div class="jumbotron">
@@ -22,31 +15,15 @@
 
       <div class="row">
          <div class="col-md-8">
-            <div class="post">
-               <h3>Post Title</h3>
-               <p><a class="btn btn-primary btn-lg" href="#", role="button">Popular Post</a></p>
-            </div>
+            @foreach ($posts as $post)
 
-            <hr>
+                  <div class="post">
+                     <h3>{{ $post->title }}</h3>
+                     <p>{{ substr($post->body, 0, 300) }} {{ strlen($post->body) > 300 ? "..." : "" }}</p>
+                     <a href="#" class="btn btn-primary">Read More</a> 
+                  </div>
 
-            <div class="post">
-               <h3>Post Title</h3>
-               <p><a class="btn btn-primary btn-lg" href="#", role="button">Popular Post</a></p>
-            </div>
-
-            <hr>
-
-            <div class="post">
-               <h3>Post Title</h3>
-               <p><a class="btn btn-primary btn-lg" href="#", role="button">Popular Post</a></p>
-            </div>
-
-            <hr>
-
-            <div class="post">
-               <h3>Post Title</h3>
-               <p><a class="btn btn-primary btn-lg" href="#", role="button">Popular Post</a></p>
-            </div>
+               @endforeach
          </div>
 
          <div class="col-md-3 col-md-offset-1">
